@@ -15,7 +15,7 @@ public class StudentController {
 	private final StudentService studentService;
 
 	public StudentController(StudentService studentService){
-		this.studentService = new StudentService();
+		this.studentService = studentService;
 	}
 	@GetMapping
 	public List<Student> getStudents(){
