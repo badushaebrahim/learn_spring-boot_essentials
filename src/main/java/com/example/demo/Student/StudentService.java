@@ -10,12 +10,17 @@ import org.springframework.stereotype.Service;
 public class StudentService {
 
 	
-	private final StudentRepository studentRepository;
+	//private final static StudentRepository studentRepository;
+
+
+	private static StudentRepository studentRepository;
+
 
 
 	@Autowired
 	public StudentService(StudentRepository studentRepository){
-		this.studentRepository = studentRepository;
+		super();
+		StudentService.studentRepository = studentRepository;
 	}
 
 
@@ -24,5 +29,12 @@ public class StudentService {
 	public List<Student> getStudents(){
 		// return List.of( new Student(12L,"badu2", "b@b.com", LocalDate.of(2000,Month.JANUARY,4), 21));	
 		return studentRepository.findAll();
+	}
+
+
+
+	public static  Student addStudent(Student st){
+		return studentRepository.save(st);
+
 	}
 }
